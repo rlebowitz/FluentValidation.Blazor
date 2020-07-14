@@ -1,0 +1,48 @@
+﻿@page "/Nested"
+@using FluentValidation.Blazor.Samples.Models
+<EditForm Model="_customer" OnValidSubmit="SaveCustomer">
+        <FluentValidator></FluentValidator>
+        <h3>Your name</h3>
+        <InputText placeholder="First name" @bind-Value="_customer.FirstName" /><span class="error-message">Customer Name required!</span>
+        <InputText placeholder="Last name" @bind-Value="_customer.LastName" />
+        @*<ValidationMessage For="@(() => _customer.FirstName)" />
+        <ValidationMessage For="@(() => _customer.LastName)" />*@
+
+        <h3>Your address</h3>
+        <div>
+            <InputText placeholder="Line 1" @bind-Value="_customer.Address1.Line1" />
+            @*<ValidationMessage For="@(() => _customer.Address1.Line1)" />*@
+        </div>
+        <div>
+            <InputText placeholder="City" @bind-Value="_customer.Address1.City" />
+            @*<ValidationMessage For="@(() => _customer.Address1.City)" />*@
+        </div>
+        <div>
+            <InputText placeholder="Postcode" @bind-Value="_customer.Address1.Postcode" />
+            @*<ValidationMessage For="@(() => _customer.Address1.Postcode)" />*@
+        </div>
+
+        <h3>Their address</h3>
+        <div>
+            <InputText placeholder="Line 1" @bind-Value="_customer.Address2.Line1" />
+            @*<ValidationMessage For="@(() => _customer.Address2.Line1)" />*@
+        </div>
+        <div>
+            <InputText placeholder="City" @bind-Value="_customer.Address2.City" />
+            @*<ValidationMessage For="@(() => _customer.Address2.City)" />*@
+        </div>
+        <div>
+            <InputText placeholder="Postcode" @bind-Value="_customer.Address2.Postcode" />
+            @*<ValidationMessage For="@(() => _customer.Address2.Postcode)" />*@
+        </div>
+        <p><button type="submit">Submit</button></p>
+    </EditForm>
+
+@code{
+    readonly Customer _customer = new Customer();
+
+    static void SaveCustomer()
+    {
+        Console.WriteLine("TODO: Actually do something with the valid data");
+    }
+}

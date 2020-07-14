@@ -1,0 +1,42 @@
+﻿@page "/Components"
+@using FluentValidation.Blazor.Samples.Models
+
+<EditForm Model="_model" OnValidSubmit="SaveStudent">
+    <FluentValidator></FluentValidator>
+    <h3>Student Information</h3>
+    <table>
+        <tr>
+            <td><label>First Name:</label></td>
+            <td><InputText @bind-Value="_model.Student.FirstName" /></td>
+        </tr>
+        <tr>
+            <td><label>Last Name:</label></td>
+            <td><InputText @bind-Value="_model.Student.LastName" /></td>
+        </tr>
+        <tr>
+            <td><label>Grade:</label></td>
+            <td><InputNumber @bind-Value="_model.Student.Grade" /></td>
+        </tr>
+        <tr>
+            <td><label>Teacher:</label></td>
+            <td><FormComponent @bind-Value="_model.Teacher"></FormComponent></td>
+        </tr>
+    </table>
+
+    <ValidationSummary></ValidationSummary>
+
+    <p>
+        <button type="submit">Submit</button>
+    </p>
+</EditForm>
+
+@code
+{
+   
+    readonly ComponentModel _model = new ComponentModel();
+
+    static void SaveStudent()
+    {
+        Console.WriteLine("Student data saved.");
+    }
+}
